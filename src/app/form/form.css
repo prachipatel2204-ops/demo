@@ -1,0 +1,56 @@
+/* Center only the button */
+.button-container {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  margin: 20px 0;          /* spacing above and below */
+}
+
+button.btn-primary {
+  padding: 14px 32px;
+  font-size: 20px; /* adjust if needed */
+  color: #fff;
+  background: rgba(74,144,226,0.6);
+  backdrop-filter: blur(8px);
+  border-radius: 30px;
+  border: 1px solid rgba(255,255,255,0.3);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+button.btn-primary:hover {
+  background: rgba(74,144,226,0.85);
+}
+
+
+/* Table */
+table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+th {
+  background: #f2f6fc;
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  padding: 10px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Actions column */
+td:last-child {
+  width: 160px;
+  text-align: center;
+}
+
+td:last-child .btn {
+  margin: 4px;
+}
+
+/* Heading */
+h3 {
+  margin-top: 25px;
+}
