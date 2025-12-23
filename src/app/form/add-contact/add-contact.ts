@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output, signal, effect } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,35 +9,49 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./add-contact.css']
 })
 export class AddContact {
-  @Input() contact: any = null;
-  @Output() contactAdded = new EventEmitter<any>();
+  // Signals for form fields
+  name = signal('');
+  phone = signal('');
+  email = signal('');
 
-  name = '';
-  phone = '';
-  email = '';
+  // Input signal for edit mode
+  editContactData = input<any>(null);
 
-  ngOnChanges() {
-    if (this.contact) {
-      this.name = this.contact.name;
-      this.phone = this.contact.phone;
-      this.email = this.contact.email;
-    } else {
-      this.reset();
-    }
+  // Output signal to parent
+  contactAdded = output<any>();
+
+  constructor() {
+    // Populate fields when editing
+    effect(()=>{
+      console.log("Add the data");
+      console.log("Name",this.name());
+      console.log("Phone",this.phone());
+      console.log("Email",this.email());
+    })
+    effect(() => {
+      const data = this.editContactData();
+      if (data) {
+        this.name.set(data.name);
+        this.phone.set(data.phone);
+        this.email.set(data.email);
+      } else {
+        this.reset();
+      }
+    });
   }
 
-  addContact() {
+  submit() {
     this.contactAdded.emit({
-      name: this.name,
-      phone: this.phone,
-      email: this.email
+      name: this.name(),
+      phone: this.phone(),
+      email: this.email()
     });
     this.reset();
   }
 
   reset() {
-    this.name = '';
-    this.phone = '';
-    this.email = '';
+    this.name.set('');
+    this.phone.set('');
+    this.email.set('');
   }
 }

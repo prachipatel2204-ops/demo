@@ -1,15 +1,15 @@
-/* Center only the button */
+/* Center the Add Contact button */
 .button-container {
   display: flex;
-  justify-content: center; /* horizontal center */
-  margin: 20px 0;          /* spacing above and below */
+  justify-content: center;
+  margin: 20px 0;
 }
 
 button.btn-primary {
   padding: 14px 32px;
-  font-size: 20px; /* adjust if needed */
+  font-size: 18px;
   color: #fff;
-  background: rgba(74,144,226,0.6);
+  background: rgba(74,144,226,0.8);
   backdrop-filter: blur(8px);
   border-radius: 30px;
   border: 1px solid rgba(255,255,255,0.3);
@@ -18,39 +18,70 @@ button.btn-primary {
 }
 
 button.btn-primary:hover {
-  background: rgba(74,144,226,0.85);
+  background: rgba(74,144,226,1);
 }
 
+/* Modal Overlay */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
+
+.modal-backdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+}
+
+/* Modal Box */
+.modal-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  z-index: 1001;
+}
 
 /* Table */
 table {
   width: 100%;
   margin-top: 20px;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+  border: 1px solid #dee2e6;
 }
 
 th {
-  background: #f2f6fc;
-  padding: 10px;
-  text-align: left;
+  background-color: #f2f6fc;
 }
 
-td {
-  padding: 10px;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-/* Actions column */
 td:last-child {
-  width: 160px;
   text-align: center;
 }
 
 td:last-child .btn {
-  margin: 4px;
+  margin: 2px;
 }
 
-/* Heading */
+/* Headings */
 h3 {
   margin-top: 25px;
+  margin-bottom: 10px;
 }

@@ -1,0 +1,13 @@
+<app-child-signal [name]="parentname()" [age]="parentage()" (changename)="parentname.set($event)">
+</app-child-signal>
+
+<button (click)="parentage.set(parentage() + 1)">
+    Increase Age
+</button>
+
+<button (click)="parentage.set(parentage() - 1)">
+    Decrease Age
+</button>
+
+<p>Parent Age: {{ parentage() }}</p>
+<p>Parent Name: {{ parentname() }}</p>

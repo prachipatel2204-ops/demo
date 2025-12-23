@@ -14,7 +14,7 @@
     <input class="form-control" [(ngModel)]="email" name="email">
   </div>
 
-  <button type="button" class="btn btn-primary w-100" (click)="addContact()">
-    {{ contact ? 'Update' : 'Add' }} Contact
+  <button type="button" class="btn btn-primary w-100" (click)="submit()">
+    {{ editContactData() ? 'Update' : 'Add' }} Contact
   </button>
 </form>

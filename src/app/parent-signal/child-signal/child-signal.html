@@ -1,0 +1,6 @@
+<p>Name: {{ name() }}</p>
+<p>Age: {{ age() }}</p>
+<p>Detail: {{ detail() }}</p>
+
+<input #nameInput type="text" placeholder="Enter new name" /><br>
+<button (click)="changeName(nameInput.value)">Change Name</button>

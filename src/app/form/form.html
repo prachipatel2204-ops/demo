@@ -1,19 +1,27 @@
-<!-- Add Contact Button -->
-<button
-  class="btn btn-primary"
-  data-bs-toggle="modal"
-  data-bs-target="#contactModal"
-  (click)="openForm()">
-  Add Contact
-</button>
+<div class="button-container">
+  <button class="btn btn-primary" (click)="openForm()">Add Contact</button>
+</div>
+
+<div *ngIf="showForm()" class="modal-container">
+  <div class="modal-backdrop" (click)="closeForm()"></div>
+
+  <div class="modal-box">
+    <h3>{{ editIndex() !== null ? 'Edit Contact' : 'Add Contact' }}</h3>
+
+    <app-add-contact
+      [editContactData]="selectedContact()"
+      (contactAdded)="addContactToParent($event)">
+    </app-add-contact>
+  </div>
+</div>
 
 <hr>
 
-<!-- Contact List Table -->
 <h3>Contact List</h3>
-<table class="table table-bordered">
+<table class="table table-bordered" *ngIf="contacts().length > 0">
   <thead>
     <tr>
+      <th>Id</th>
       <th>Name</th>
       <th>Phone</th>
       <th>Email</th>
@@ -22,48 +30,19 @@
   </thead>
 
   <tbody>
-    <tr *ngFor="let c of contacts; let i = index">
+    <tr *ngFor="let c of contacts(); let i = index">
+      <td>{{ i + 1 }}</td>
       <td>{{ c.name }}</td>
       <td>{{ c.phone }}</td>
       <td>{{ c.email }}</td>
       <td>
-        <button
-          class="btn btn-success btn-sm me-2"
-          data-bs-toggle="modal"
-          data-bs-target="#contactModal"
-          (click)="openForm(i)">
+        <button class="btn btn-success btn-sm me-2" (click)="editContact(c, i)">
           Edit
         </button>
-
-        <button
-          class="btn btn-danger btn-sm"
-          (click)="deleteContact(i)">
+        <button class="btn btn-danger btn-sm" (click)="deleteContact(i)">
           Delete
         </button>
       </td>
     </tr>
   </tbody>
 </table>
-
-<!-- Modal -->
-<div class="modal fade" id="contactModal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 class="modal-title">
-          {{ editingIndex !== null ? 'Edit Contact' : 'Add Contact' }}
-        </h5>
-        <button class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body">
-        <app-add-contact
-          [contact]="editingIndex !== null ? contacts[editingIndex] : null"
-          (contactAdded)="addContactToParent($event)">
-        </app-add-contact>
-      </div>
-
-    </div>
-  </div>
-</div>

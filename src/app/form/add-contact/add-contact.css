@@ -1,54 +1,61 @@
-/* Form container */
+/* Form Container (optional if you wrap in modal-box) */
 form {
-  width: 420px;
-  margin: 20px auto;
-  padding: 25px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-/* Row layout */
-.form-row {
+/* Form rows */
+.mb-3 {
   display: flex;
   align-items: center;
-  margin-bottom: 15px;
 }
 
-/* Labels */
-label {
-  width: 110px;
+.mb-3 label {
+  width: 100px;
+  margin-right: 10px;
   font-weight: 500;
-  color: #333;
 }
 
-/* Inputs */
-input {
+/* Input fields */
+.mb-3 input.form-control {
   flex: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
-}
-
-input:focus {
-  border-color: #4a90e2;
-  outline: none;
-}
-
-/* ✅ ONLY form submit button */
-form button {
-  width: 100%;
-  padding: 12px;
-  background: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 6px;
+  padding: 8px 12px;
   font-size: 16px;
-  cursor: pointer;
-  transition: 0.3s;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-form button:hover {
-  background: #357abd;
+.mb-3 input.form-control:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74,144,226,0.5);
+}
+
+/* Submit button */
+button.btn-primary {
+  padding: 12px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background: #4a90e2;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+button.btn-primary:hover {
+  background: #3578c6;
+  transform: translateY(-1px);
+}
+
+button.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Full-width button */
+button.w-100 {
+  width: 100%;
 }
